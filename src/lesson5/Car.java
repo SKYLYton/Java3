@@ -47,16 +47,10 @@ public class Car implements Runnable {
         for (int i = 0; i < race.getStages().size(); i++) {
             race.getStages().get(i).go(this);
 
-            race.lock();
-            System.out.println(name + " закончил этап: " +
-                    race.getStages().get(i).getDescription());
-
-            if (i == race.getStages().size() - 1) {
-                race.setHaveWinner(getName());
-            }
-
+        }
+        if (race.lock()) {
+            race.setHaveWinner(getName());
             race.unlock();
-
         }
 
 

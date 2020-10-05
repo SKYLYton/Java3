@@ -20,8 +20,8 @@ public class Race {
 
     }
 
-    public void lock() {
-        lock.lock();
+    public boolean lock() {
+        return lock.tryLock();
     }
 
     public void unlock() {
